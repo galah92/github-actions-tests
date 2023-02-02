@@ -40,7 +40,7 @@ jobs:
       ||                                'dev'
       }}
     steps:
-      - run: echo "🎉 Running!"
+      - run: echo "🎉 Running!!"
       - run: echo "🎉 environment = ${{ inputs.environment }}"
       - run: echo "🎉 dev = ${{ vars.MY_VAR == 'MY_DEV_VALUE' }}."
       - run: echo "🎉 prod = ${{ vars.MY_VAR == 'MY_PROD_VALUE' }}."
