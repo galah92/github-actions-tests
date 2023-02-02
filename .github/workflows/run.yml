@@ -39,7 +39,6 @@ jobs:
       || startsWith(github.ref_name) == 'prod2' && 'dev'
       ||                                'dev'
       }}
-    environment: "dev"
     steps:
       - run: echo "🎉 Running!"
       - run: echo "🎉 environment = ${{ inputs.environment }}"
