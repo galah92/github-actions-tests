@@ -27,11 +27,21 @@ jobs:
       - run: echo "🎉 environment = ${{ inputs.environment }}"
       - run: echo "🎉 dev = ${{ vars.MY_VAR == 'MY_DEV_VALUE' }}."
       - run: echo "🎉 prod = ${{ vars.MY_VAR == 'MY_PROD_VALUE' }}."
+      - run: echo "💡"
 
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'pull_request' }}
+    environment: |-
+      ${{
+         startsWith(github.ref_name) == 'prod1' && 'prod'
+      || startsWith(github.ref_name) == 'prod2' && 'dev'
+      ||                                'dev'
+      }}
     environment: "dev"
     steps:
       - run: echo "🎉 Running!"
+      - run: echo "🎉 environment = ${{ inputs.environment }}"
+      - run: echo "🎉 dev = ${{ vars.MY_VAR == 'MY_DEV_VALUE' }}."
+      - run: echo "🎉 prod = ${{ vars.MY_VAR == 'MY_PROD_VALUE' }}."
