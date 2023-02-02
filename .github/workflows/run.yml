@@ -35,8 +35,8 @@ jobs:
     if: ${{ github.event_name != 'pull_request' }}
     environment: |-
       ${{
-         startsWith(github.ref_name) == 'prod1' && 'prod'
-      || startsWith(github.ref_name) == 'prod2' && 'dev'
+         startsWith(github.ref_name, 'prod1') && 'prod'
+      || startsWith(github.ref_name, 'prod2') && 'dev'
       ||                                'dev'
       }}
     steps:
